@@ -1,0 +1,28 @@
+{
+  "name": "thumbler",
+  "version": "1.0.0",
+  "description": "This package will extract thumbnail from video",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mmahrous/thumbler.git"
+  },
+  "keywords": [
+    "thumbnails",
+    "video",
+    "thumbnail",
+    "video-thumbnail"
+  ],
+  "author": "M.Mahrous <m.mahrous.94@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mmahrous/thumbler/issues"
+  },
+  "homepage": "https://github.com/mmahrous/thumbler#readme",
+  "dependencies": {
+    "@ffmpeg-installer/ffmpeg": "^1.0.9"
+  }
+}
