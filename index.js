@@ -3,7 +3,7 @@
 const ffmpegPath = require('@ffmpeg-installer/ffmpeg').path;
 const exec = require('child_process').exec;
 
-function extract(path, destPath, time, size, callback) {
+var extract = function (path, destPath, time, size, callback) {
 	if (time == null) {
 	  time = '00:00:01';
 	}
@@ -17,3 +17,5 @@ function extract(path, destPath, time, size, callback) {
 	  }
 	});
 }
+
+module.exports = extract;
