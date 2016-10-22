@@ -4,8 +4,8 @@
   "description": "This package will extract thumbnail from video",
   "main": "index.js",
   "scripts": {
-    "test_video": "node test/test_video",
-    "test_image": "node test/test_image"
+    "test_video": "node test/video",
+    "test_image": "node test/image"
   },
   "repository": {
     "type": "git",
