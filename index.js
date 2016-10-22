@@ -3,18 +3,41 @@
 const ffmpegPath = require('@ffmpeg-installer/ffmpeg').path;
 const exec = require('child_process').exec;
 
-var extract = function (path, destPath, time, size, callback) {
-	if (time == null) {
-	  time = '00:00:01';
+var extract = function (options,callback) {
+	if (options.type == 'video') {
+		video(options, function(err, path){
+			if (err) return callback( err , null);
+	    	callback(null, path);
+		})
+	}else if (options.type == 'image') {
+		image(options, function(err, path){
+			if (err) return callback( err , null);
+	    	callback(null, path);
+		})
+	}else{
+		callback("Not supported.", null);
 	}
-	if (size == null) {
-	  size = '200x125';
+}
+
+function video(options, callback){
+	if (options.size == null) {
+	  options.size = ' ';
+	}else {
+		options.size = ' -y -s ' + options.size;
 	}
-	return exec(ffmpegPath +' -ss ' + time + ' -i ' + path + ' -y -s ' + size + ' -vframes 1 -f image2 -vf scale=iw*.5:ih*.5' + destPath, function( err ) {
-	  if (callback) {
-	    return callback( err , null);
-	    callback(null, destPath);
-	  }
+	if (options.time == null) {
+	  options.time = '00:00:01';
+	}
+	exec(ffmpegPath +' -ss ' + options.time + ' -i ' + options.input + options.size + ' -vframes 1 -f image2 ' + options.output, function( err ) {
+	    if (err) return callback( err , null);
+	    callback(null, options.output);
+	});
+}
+
+function image(options, callback){
+	exec(ffmpegPath + ' -i ' + options.input + ' -vf scale='+options.size+':force_original_aspect_ratio=decrease ' + options.output, function( err ) {
+	    if (err) return callback( err , null);
+	    callback(null, options.output);
 	});
 }
 
