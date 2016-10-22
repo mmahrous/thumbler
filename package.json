@@ -1,10 +1,11 @@
 {
   "name": "thumbler",
-  "version": "1.0.0-1",
+  "version": "1.1.0",
   "description": "This package will extract thumbnail from video",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test_video": "node test/test_video",
+    "test_image": "node test/test_image"
   },
   "repository": {
     "type": "git",
