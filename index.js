@@ -1,6 +1,6 @@
 "use strict";
 
-const ffmpegPath = require('@ffmpeg-installer/ffmpeg').path;
+const ffmpegPath = '\"' + require('@ffmpeg-installer/ffmpeg').path + '\"';
 const exec = require('child_process').exec;
 
 var extract = function (options,callback) {
